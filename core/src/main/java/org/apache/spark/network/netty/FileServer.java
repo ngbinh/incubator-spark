@@ -95,7 +95,7 @@ class FileServer {
     }
     // Shutdown bootstrap.
     if (bootstrap != null) {
-      bootstrap.shutdown();
+      bootstrap.group().shutdownGracefully();
       bootstrap = null;
     }
     // TODO: Shutdown all accepted channels as well ?

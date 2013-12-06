@@ -25,6 +25,7 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.oio.OioEventLoopGroup;
 import io.netty.channel.socket.oio.OioSocketChannel;
 
+import io.netty.util.concurrent.EventExecutorGroup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -81,8 +82,8 @@ class FileClient {
       channel.close();
       channel = null;
     }
-    if ( bootstrap!=null) {
-      bootstrap.shutdown();
+    if (bootstrap!=null) {
+      bootstrap.group().shutdownGracefully();
       bootstrap = null;
     }
   }
